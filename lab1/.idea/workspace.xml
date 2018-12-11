@@ -162,27 +162,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="db_lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="db_lab1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="db_lab1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="db_lab1" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="color&#9;ACTION&#9;JumpToColorsAndFonts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
