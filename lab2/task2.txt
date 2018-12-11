@@ -1,0 +1,54 @@
+CREATE OR REPLACE FUNCTION switchTransmissionFlag() RETURNS SETOF cars AS
+$BODY$
+DECLARE
+    c cars%rowtype;
+
+BEGIN
+    FOR c IN SELECT * FROM cars
+    LOOP
+        IF c.has_automatic_transmission = true THEN
+            c.has_automatic_transmission = false;
+        ELSE
+            c.has_automatic_transmission = true;
+        END IF;
+        RETURN NEXT c;
+    END LOOP;
+    RETURN;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT * FROM switchTransmissionFlag()
+
+###
+
+CREATE FUNCTION check_not_neg_price() RETURNS trigger AS $func$
+    BEGIN
+        IF NEW.price_per_day < 0 THEN
+            RAISE EXCEPTION 'price cant be lower than one';
+        END IF;
+
+        RETURN NEW;
+    END;
+$func$ LANGUAGE plpgsql;
+
+CREATE TRIGGER car_change BEFORE INSERT OR UPDATE ON cars
+    FOR EACH ROW EXECUTE PROCEDURE check_not_neg_price();
+
+
+
+###
+
+SELECT * FROM cars;
+
+###
+
+INSERT INTO cars (car_number, model, price_per_day, has_automatic_transmission, color, name) VALUES ('AA0123AA', 'sample model', 1000, False, 'transparent', 'sample car');
+
+
+UPDATE cars
+SET model = 'EAST VIRGINIA'
+WHERE car_number = 'AA4563MM';
+
+
+DELETE FROM cars WHERE car_number == AA4563MM
